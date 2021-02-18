@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <MessagePopover
+        items="{message>/}"
+        initiallyExpanded="true" activeTitlePress="onPressActiveTitle">
+        <!-- using expresson binding for activeTitle checking
+        control id present or not for success message , not defined processor for sucess-->
+        <MessageItem
+            type="{message>type}"
+            title="{message>message}"
+            subtitle="{message>additionalText}"
+            activeTitle= "{=${message>controlIds}.length ? true : false}"
+            description="{message>description}" />
+    </MessagePopover>
+</core:FragmentDefinition>

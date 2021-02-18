@@ -1,0 +1,79 @@
+<mvc:View controllerName="message.HTML5Module.controller.View1" xmlns:mvc="sap.ui.core.mvc" 
+displayBlock="true" xmlns="sap.m" 	xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+                    <f:SimpleForm id="SimpleFormColum"
+							  editable="true"
+							  layout="ColumnLayout"
+							  title="Personal"
+							  columnsM="1"
+							  columnsL="1"
+							  columnsXL="1">
+                              <core:Title text="Information" />
+						<Label
+                                    text="String\{3,10\}"
+                                   />
+						<Input
+                                   id="mandatory_input"
+                                    value="{
+                                        path: '/MandatoryInputValue',
+                                        type: 'sap.ui.model.type.String',
+                                        constraints: {
+                                            minLength: 3,
+                                            maxLength: 10
+                                        }
+                                    }"  validationError="onValidationError" validationSuccess="onValidationSucess" required="true" />
+						<Label text="DatePicker"/>
+                        <DatePicker
+                                   
+                                    value="{
+                                        path:'/DateValue',
+                                        type:'sap.ui.model.type.Date',
+                                        formatOptions: {
+                                            style: 'short',
+                                            strictParsing: false
+                                        },
+                                        constraints: { }
+                                    }" />
+                                    <Label text="Phone Number"/>
+                                    <Input value="{path:'/IntegerValue',
+                                    type:'sap.ui.model.type.Integer'
+                                   
+                                    }" maxLength="10"
+                                    required="true" change="onChangeRequired" validationSuccess="onValidationSucess"></Input>
+
+                                    
+                                     <Label text="Email"/>
+                                    <Input value="{path:'/email',
+                                    type : 'sap.ui.model.type.String',
+                                    constraints:{
+                                        search: '^\\w+[\\w-+\\.]*\\@[a-zA-Z]+\\.[a-zA-Z]+'
+                                    }
+                                    }" maxLength="30"
+                                    required="true" change="onChangeRequired" validationSuccess="onValidationSucess" ></Input>
+                              </f:SimpleForm>
+
+                              
+                    </content>
+                    
+                    <footer>
+                    <Toolbar >
+                    <Button
+                    icon="sap-icon://alert"
+                    text="{= ${message>/}.length }"
+                    visible="{= ${message>/}.length > 0 }"
+                    type="Emphasized"
+                    press="onMessagePopoverPress" />
+                    <ToolbarSpacer ></ToolbarSpacer>
+
+                    <Button text="save" press="onPressSaveButton"></Button>
+                    </Toolbar>
+                    </footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
